@@ -38,6 +38,28 @@ html {
 }
 
 /*
+ * A better looking scrollbar
+ */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/*
  * A better looking default horizontal rule
  */
 
@@ -178,8 +200,124 @@ th{
 }
 
 
+.atracties{
+  margin-bottom: 50px;
+  display: grid;
+  grid-auto-flow: row dense;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  font-family: Roboto;
+}
 
+.atractie{
+  background-color: #F5FCF8;
+  color: #0B351D;
+  border: 1px solid black;
+  border-radius: 30px;
+  -webkit-box-shadow: 10px 10px 13px -10px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 13px -10px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 13px -10px rgba(0,0,0,0.75);
+  height: 400px;
+}
 
+.atractie .container{
+  margin: 0px;
+  display: flex;
+}
+.atractie .container .left{
+  width: 50%;
+  height: 190px;
+  padding: 5px;
+}
+.atractie .container .left p{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.atractie .container .left .title{
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #3ED67D;
+}
+.atractie .container .left .theme{
+  color: #849D8E;
+  width: 100%;
+  font-family: Oxanium;
+}
+.atractie .container .left .desc{
+  color: #0B351D;
+}
+.atractie .container .right{
+  background-color: #FFFFFF;
+  width: 50%;
+  height: 190px;
+  padding: 5px;
+  border-bottom-right-radius: 30px;
+}
+.atractie .container .right button{
+  width: 100%;
+  background-color: #3ED67D;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 50px;
+}
+.atractie .container .right button:hover{
+  background-color: #26d66f;
+  cursor: pointer;
+}
+
+.atractie img{
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.wide{
+  grid-column: span 2;
+}
+
+.atractie-table-div{
+  height: 80vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.atractie-table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.atractie-table td, .atractie-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.atractie-table tr:nth-child(even){background-color: #f2f2f2;}
+
+.atractie-table tr:hover {background-color: #ddd;}
+
+.atractie-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #3ED67D;
+  color: white;
+}
+
+.nieuwe-atractie-btn{
+  display: inline-block;
+  background-color: #3ED67D;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+}
 
 /* ==========================================================================
    Helper classes

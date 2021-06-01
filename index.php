@@ -25,7 +25,32 @@ require_once 'admin/backend/config.php';
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia modi dolore magnam! Iste libero voluptatum autem, sapiente ullam earum nostrum sed magnam vel laboriosam quibusdam, officia, esse vitae dignissimos nulla?
         </aside>
         <main>
-            <!-- hier komen de attractiekaartjes -->
+            <?php
+                require_once 'admin/backend/conn.php';
+                $query = "SELECT * FROM rides";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                $rides = $statement->fetchAll(PDO::FETCH_ASSOC);
+            ?>
+            <div class="atracties">
+                <?php foreach($rides as $ride): ?>
+                    <div class="atractie <?php if($ride['fast_pass'] == "1")echo "wide"; ?>">
+                        <img src="./img/attracties/<?php echo $ride['img_file']; ?>" alt="Atractie foto">
+                        <div class="container">
+                            <div class="left">
+                                <p class="theme"><?php echo ucfirst($ride['themeland']); ?> <?php if($ride['min_length'] != null){echo "- Lengte: " . ucfirst($ride['min_length']."m");} ?></p>
+                                <h2 class="title"><?php echo $ride['title']; ?></h2>
+                                <p class="desc"><?php echo $ride['description']; ?></p>
+                            </div>
+                            <?php if($ride['fast_pass'] == "1"): ?>
+                            <div class="right">
+                                <button>Fast Pass</button>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </main>
     </div>
 
