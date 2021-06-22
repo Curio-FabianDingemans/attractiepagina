@@ -27,16 +27,15 @@ if(!isset($_SESSION['user_id']))
 
     <?php require_once '../../header.php'; ?>
     <div class="container">
-        <a class="nieuwe-atractie-btn" href="create.php">Nieuwe attractie maken &gt;</a>
-        
         <?php
-        require_once '../backend/conn.php';
-        $query = "SELECT * FROM rides";
-        $statement = $conn->prepare($query);
-        $statement->execute();
-        $rides = $statement->fetchAll(PDO::FETCH_ASSOC);
+            require_once '../backend/conn.php';
+            $query = "SELECT * FROM rides ORDER BY `title`";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            $rides = $statement->fetchAll(PDO::FETCH_ASSOC);
         ?>
-
+        <a class="nieuwe-atractie-btn" href="create.php">Nieuwe attractie maken &gt;</a>
+        <p>De lijst bevan <?php echo count($rides); ?> atracties.</p>
         <div class="atractie-table-div">
             <table class="atractie-table">
                 <tr>
@@ -49,8 +48,8 @@ if(!isset($_SESSION['user_id']))
                 <?php foreach($rides as $ride): ?>
                     <tr>
                         <td><?php echo $ride['title']; ?></td>
-                        <td><?php echo $ride['themeland']; ?></td>
-                        <td><?php echo $ride['min_length']; ?></td>
+                        <td><?php echo ucfirst($ride['themeland']); ?></td>
+                        <td><?php if($ride['min_length'] > 1)echo $ride['min_length']."cm"; ?></td>
                         <td><?php echo ($ride['fast_pass'] == "1" ? "Ja" : "Nee"); ?></td>
                         <td><a href="edit.php?id=<?php echo $ride['id']; ?>">aanpassen</a></td>
                     </tr>

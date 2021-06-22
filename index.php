@@ -16,9 +16,7 @@ require_once 'admin/backend/config.php';
     <link rel="stylesheet" href="<?php echo $base_url; ?>/css/main.css">
     <link rel="icon" href="<?php echo $base_url; ?>/favicon.ico" type="image/x-icon" />
 </head>
-
 <body>
-
     <?php require_once 'header.php'; ?>
     <div class="container content">
         <aside>
@@ -35,16 +33,21 @@ require_once 'admin/backend/config.php';
             <div class="atracties">
                 <?php foreach($rides as $ride): ?>
                     <div class="atractie <?php if($ride['fast_pass'] == "1")echo "wide"; ?>">
-                        <img src="./img/attracties/<?php echo $ride['img_file']; ?>" alt="Atractie foto">
+                        <img class="mainimg" src="./img/attracties/<?php echo $ride['img_file']; ?>" alt="Atractie foto">
                         <div class="container">
-                            <div class="left">
-                                <p class="theme"><?php echo ucfirst($ride['themeland']); ?> <?php if($ride['min_length'] != null){echo "- Lengte: " . ucfirst($ride['min_length']."m");} ?></p>
+                            <div class="left <?php if($ride['fast_pass'] == "0")echo "fullwidth"; ?>">
+                                <p class="theme"><?php echo ucfirst($ride['themeland']); ?></p>
                                 <h2 class="title"><?php echo $ride['title']; ?></h2>
                                 <p class="desc"><?php echo $ride['description']; ?></p>
+                                <p class="minheight"><?php if($ride['min_length'] != null){echo "<strong>".ucfirst($ride['min_length']."cm</strong> minimale lengte");}else{echo "<strong>Geen</strong> minimale lengte";} ?></p>
                             </div>
                             <?php if($ride['fast_pass'] == "1"): ?>
                             <div class="right">
-                                <button>Fast Pass</button>
+                                <p class="fastpass-desc">Deze atractie is alleen te bezoeken met een fastpass.</p>
+                                <div>
+                                    <p>Boek nu en sla de wachtrij over.</p>
+                                    <button><img src="./img/Ticket.png" alt="TicketIcon"> FAST PASS</button>
+                                </div>
                             </div>
                             <?php endif; ?>
                         </div>

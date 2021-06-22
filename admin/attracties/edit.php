@@ -39,7 +39,7 @@ if(!isset($_SESSION['user_id']))
         $ride = $statement->fetch(PDO::FETCH_ASSOC);
         ?>
 
-        <form action="../backend/ridesController.php" method="POST">
+        <form action="../backend/ridesController.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="action" value="update">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <input type="hidden" name="old_img" value="<?php echo $ride['img_file']; ?>">
@@ -56,6 +56,14 @@ if(!isset($_SESSION['user_id']))
                     <option value="waterland" <?php if($ride['themeland'] == 'waterland') echo 'selected'; ?>>Waterland</option>
                     <option value="adventureland" <?php if($ride['themeland'] == 'adventureland') echo 'selected'; ?>>Adventureland</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="min_length">Min Lengte in cm:</label>
+                <input type="number" name="min_length" id="min_length" value="<?php echo $ride['min_length']; ?>" class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="description">Beschijving:</label>
+                <textarea name="description" id="description" cols="30" rows="10"><?php echo $ride['description']; ?></textarea>
             </div>
             <div class="form-group">
                 <label for="img_file">Afbeelding:</label>
