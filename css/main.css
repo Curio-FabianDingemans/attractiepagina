@@ -217,6 +217,12 @@ th{
   -moz-box-shadow: 10px 10px 13px -10px rgba(0,0,0,0.75);
   box-shadow: 10px 10px 13px -10px rgba(0,0,0,0.75);
   min-width: 200px;
+  transition: all ease-in-out .1s;
+}
+
+.atractie:hover{
+  cursor: default;
+  transform: scale(1.01);
 }
 
 .atractie .container{
@@ -350,6 +356,20 @@ th{
   border-radius: 5px;
   color: white;
   text-decoration: none;
+}
+
+.attractieSort{
+  width: 100%;
+  margin-bottom: 10px;
+}
+.attractieSort select{
+  width: 100%;
+}
+.attractieSort input{
+  width: calc(100% - 8px);
+}
+.attractieSort button{
+  width: 100%;
 }
 
 /* ==========================================================================
